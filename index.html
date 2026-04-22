@@ -1,20 +1,105 @@
-Hello!歡迎大家來到我的網站!
-<hr/>
-<a href="sketchfab.html">Hip Hop SketchFab</a> <br/>
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Li Guan-guan's Space</title>
+    <style>
+        /* 全域樣式：溫柔簡約背景 */
+        body {
+            background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: "PingFang TC", "Helvetica Neue", Helvetica, Arial, "Microsoft JhengHei", sans-serif;
+            color: #5a5a5a;
+            margin: 0;
+            padding: 60px 20px;
+        }
 
-<p>
-<a href="0.babylonViewer Basic.html">My SketchFab</a>
-</p>
+        /* 標題樣式 */
+        h1 {
+            font-weight: 300;
+            letter-spacing: 4px;
+            color: #444;
+            margin-bottom: 10px;
+        }
 
-<p>
-<a href="1.babylonViewer Select.html">I am Astronaut</a>
-</p>
+        .subtitle {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 40px;
+            letter-spacing: 1px;
+        }
 
-<a href="2.babylonViewer Navbar.html">Navbar</a>
-<hr/>
-<!--
-<p>
-<a href="./webAR">WebAR 範例</a>
-</p>
--->
+        /* 玻璃擬態容器 */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            padding: 40px;
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
 
+        /* 連結列表樣式 */
+        .link-group {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .link-item {
+            text-decoration: none;
+            color: #666;
+            padding: 15px 20px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            border: 1px solid transparent;
+            font-size: 1.05rem;
+        }
+
+        .link-item:hover {
+            background: #ffffff;
+            color: #333;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+        }
+
+        /* 頁尾小字 */
+        footer {
+            margin-top: auto;
+            padding-top: 40px;
+            font-size: 0.8rem;
+            color: #bbb;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>HELLO!</h1>
+    <p class="subtitle">歡迎大家來到我的網站</p>
+
+    <div class="glass-card">
+        <div class="link-group">
+            <a href="sketchfab.html" class="link-item">🕺 Hip Hop SketchFab</a>
+            <a href="0.babylonViewer Basic.html" class="link-item">🎨 My SketchFab</a>
+            <a href="1.babylonViewer Select.html" class="link-item">👨‍🚀 I am Astronaut</a>
+            <a href="2.babylonViewer Navbar.html" class="link-item">📱 Navbar Control</a>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2026 Li Guan-guan. All rights reserved.
+    </footer>
+
+</body>
+</html>
