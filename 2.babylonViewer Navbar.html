@@ -1,43 +1,162 @@
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <title>BabylonJS Viewer - Basic usage</title>
-        <style>
-			.viewerContainer {
-                width: 400px;
-                height: 500px;				
-				image-rendering: pixelated; /* to prevent blury when zoomed out */
-			}
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>BabylonJS Viewer - Navbar Control</title>
+    <script src="https://cdn.babylonjs.com/viewer/babylon.viewer.js"></script>
+    <style>
+        /* 延續風格的背景與光暈 */
+        body {
+            background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: "PingFang TC", "Helvetica Neue", Helvetica, Arial, "Microsoft JhengHei", sans-serif;
+            color: #5a5a5a;
+            margin: 0;
+            padding: 40px 20px;
+            position: relative;
+            overflow-x: hidden;
+        }
 
-        </style>
-		<script src="https://cdn.babylonjs.com/viewer/babylon.viewer.js"></script>
-	<script>
-		function loadit(modelUrl) {
-			if(modelUrl) {
-				let viewer = BabylonViewer.viewerManager.getViewerById('viewerID');
-				let temp = viewer.templateManager.getTemplate('navBar');
-				let param= temp._configuration;
-				param.params.hideVr=false;
-                param.params.disableOnFullscreen=true;
-				temp.updateParams(param);
-				viewer.loadModel(modelUrl)
-			}
-		}
-	</script>
+        .circle {
+            position: absolute;
+            width: 450px;
+            height: 450px;
+            filter: blur(100px);
+            z-index: 0;
+            border-radius: 50%;
+            opacity: 0.4;
+        }
+        .c1 { background: #ffdfdf; top: -10%; left: -5%; }
+        .c2 { background: #d0e8ff; bottom: -5%; right: -5%; }
+
+        .container {
+            z-index: 1;
+            width: 100%;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h2 {
+            font-weight: 300;
+            letter-spacing: 5px;
+            color: #444;
+            margin-bottom: 25px;
+        }
+
+        /* 下拉選單美化 */
+        select {
+            padding: 12px 25px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(10px);
+            color: #555;
+            font-size: 1rem;
+            outline: none;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+
+        select:hover {
+            background: #fff;
+            transform: translateY(-2px);
+        }
+
+        /* 玻璃展示卡片 */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.35);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 35px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        /* 調整展示容器 */
+        .viewerContainer {
+            width: 100%;
+            height: 550px; /* 稍微加高以容納 Navbar */
+            border-radius: 20px;
+            overflow: hidden;
+            background: #fff;
+            image-rendering: pixelated;
+        }
+
+        babylon {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* 回首頁按鈕 */
+        .back-link {
+            margin-top: 40px;
+            text-decoration: none;
+            color: #888;
+            padding: 12px 30px;
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50px;
+            background: rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .back-link:hover {
+            background: #fff;
+            color: #222;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+    <script>
+        function loadit(modelUrl) {
+            if(modelUrl) {
+                let viewer = BabylonViewer.viewerManager.getViewerById('viewerID');
+                // 保留你原本調整 Navbar 的邏輯
+                let temp = viewer.templateManager.getTemplate('navBar');
+                let param = temp._configuration;
+                param.params.hideVr = false;
+                param.params.disableOnFullscreen = true;
+                temp.updateParams(param);
+                
+                viewer.loadModel(modelUrl);
+            }
+        }
+    </script>
 </head>
 <body>
-<select onchange="loadit(this.value)">
-	<option value="">select model</option>
-	<option value="./models/alice.glb">Hello</option>
-	<option value="./models/Astronaut.glb">I am Astronaut</option>
-	<option value="./models/buddha.glb">guanguan</option>
-</select>
-<div class='viewerContainer'>
-	<babylon id="viewerID"><vr></vr></babylon>
-</div>
-</body>
 
+    <div class="circle c1"></div>
+    <div class="circle c2"></div>
+
+    <div class="container">
+        <h2>NAVBAR CONTROL</h2>
+
+        <select onchange="loadit(this.value)">
+            <option value="">📱 選擇模型並顯示選單</option>
+            <option value="./models/alice.glb">Hello</option>
+            <option value="./models/Astronaut.glb">I am Astronaut</option>
+            <option value="./models/buddha.glb">Guanguan</option>
+        </select>
+
+        <div class="glass-card">
+            <div class='viewerContainer'>
+                <babylon id="viewerID"><vr></vr></babylon>
+            </div>
+        </div>
+
+        <a href="index.html" class="back-link">← 返回首頁導覽</a>
+    </div>
+
+</body>
 </html>
