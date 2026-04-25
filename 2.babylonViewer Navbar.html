@@ -122,7 +122,7 @@
         function loadit(modelUrl) {
             if(modelUrl) {
                 let viewer = BabylonViewer.viewerManager.getViewerById('viewerID');
-                // 保留你原本調整 Navbar 的邏輯
+                // 保留調整 Navbar 的邏輯
                 let temp = viewer.templateManager.getTemplate('navBar');
                 let param = temp._configuration;
                 param.params.hideVr = false;
@@ -143,10 +143,11 @@
         <h2>NAVBAR CONTROL</h2>
 
         <select onchange="loadit(this.value)">
-            <option value="">📱選擇模型並顯示選單</option>
+            <option value="">📱 選擇模型並顯示選單</option>
             <option value="./models/alice.glb">Hello</option>
             <option value="./models/Astronaut.glb">I am Astronaut</option>
-            <option value="./models/buddha.glb">Guanguan</option>
+            <option value="./models/buddha.glb">Buddha</option>
+            <option value="./models/girl.glb">homework</option>
         </select>
 
         <div class="glass-card">
