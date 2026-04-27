@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>My 3D Model: leeeee</title>
+    <title>My 3D Model: my</title>
+    <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.4.0/model-viewer.min.js"></script>
+    
     <style>
-        /* 延續首頁的溫柔漸層背景 */
+        /* 延續你的優雅設計 */
         body {
             background: linear-gradient(120deg, #fdfbfb 0%, #ebedee 100%);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             align-items: center;
-            font-family: "PingFang TC", "Helvetica Neue", Helvetica, Arial, "Microsoft JhengHei", sans-serif;
+            font-family: "PingFang TC", "Microsoft JhengHei", sans-serif;
             color: #5a5a5a;
             margin: 0;
             padding: 40px 20px;
@@ -21,38 +22,17 @@
             overflow-x: hidden;
         }
 
-        /* 背景裝飾球（光暈效果） */
         .circle {
-            position: absolute;
-            width: 450px;
-            height: 450px;
-            filter: blur(100px);
-            z-index: 0;
-            border-radius: 50%;
-            opacity: 0.4;
+            position: absolute; width: 450px; height: 450px;
+            filter: blur(100px); z-index: 0; border-radius: 50%; opacity: 0.4;
         }
         .c1 { background: #ffdfdf; top: -10%; left: -5%; }
         .c2 { background: #d0e8ff; bottom: -5%; right: -5%; }
 
-        .container {
-            z-index: 1;
-            width: 100%;
-            max-width: 850px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+        .container { z-index: 1; width: 100%; max-width: 850px; display: flex; flex-direction: column; align-items: center; }
 
-        /* 標題與文字細節 */
-        h2 {
-            font-weight: 300;
-            letter-spacing: 5px;
-            color: #444;
-            margin-bottom: 30px;
-            text-transform: uppercase;
-        }
+        h2 { font-weight: 300; letter-spacing: 5px; color: #444; margin-bottom: 30px; text-transform: uppercase; }
 
-        /* 玻璃展示卡片 */
         .glass-card {
             background: rgba(255, 255, 255, 0.35);
             backdrop-filter: blur(20px);
@@ -63,40 +43,23 @@
             padding: 25px;
             width: 100%;
             box-sizing: border-box;
-            transition: transform 0.3s ease;
         }
 
-        /* 模型外框圓角與陰影 */
-        .sketchfab-embed-wrapper iframe {
+        /* 讓模型播放器撐滿卡片 */
+        model-viewer {
             width: 100%;
             height: 500px;
             border-radius: 20px;
-            border: none;
-            display: block;
+            --poster-color: transparent;
         }
 
-        /* 回首頁按鈕設計 */
         .back-link {
-            margin-top: 40px;
-            text-decoration: none;
-            color: #888;
-            padding: 12px 30px;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            border-radius: 50px;
-            background: rgba(255, 255, 255, 0.5);
-            transition: all 0.3s ease;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
+            margin-top: 40px; text-decoration: none; color: #888;
+            padding: 12px 30px; border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 50px; background: rgba(255, 255, 255, 0.5);
+            transition: all 0.3s ease; font-size: 0.9rem; display: flex; align-items: center; gap: 8px;
         }
-
-        .back-link:hover {
-            background: #fff;
-            color: #222;
-            transform: translateX(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
+        .back-link:hover { background: #fff; color: #222; transform: translateX(-5px); }
     </style>
 </head>
 <body>
@@ -105,20 +68,18 @@
     <div class="circle c2"></div>
 
     <div class="container">
-        <h2>Model: leeeee</h2>
+        <h2>Model: my</h2>
 
         <div class="glass-card">
-            <div class="sketchfab-embed-wrapper"> 
-                <iframe 
-                    title="leeeee" 
-                    frameborder="0" 
-                    allowfullscreen 
-                    mozallowfullscreen="true" 
-                    webkitallowfullscreen="true" 
-                    allow="autoplay; fullscreen; xr-spatial-tracking" 
-                    src="https://sketchfab.com/models/0c79133078124ad9b8addc9e480ef0e1/embed"> 
-                </iframe> 
-            </div>
+            <model-viewer 
+                src="./models/my.glb" 
+                ar 
+                camera-controls 
+                touch-action="pan-y" 
+                autoplay 
+                shadow-intensity="1" 
+                alt="A 3D model of my">
+            </model-viewer>
         </div>
 
         <a href="index.html" class="back-link">
